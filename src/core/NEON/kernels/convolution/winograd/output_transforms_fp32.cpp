@@ -31,7 +31,16 @@ namespace output_transform {
 
 #if defined(__aarch64__)
 #if defined(ARM_COMPUTE_ENABLE_SME)
-void sme_fp32_mopa_4x4_3x3(unsigned int, const float *, size_t, const float *, float *, size_t, size_t, float, float);
+void sme_fp32_mopa_4x4_3x3(
+  const unsigned int,
+  const float *,
+  const size_t,
+  const float *,
+  float *const,
+  const size_t,
+  const size_t,
+  const float,
+  const float);
 #endif  // defined(ARM_COMPUTE_ENABLE_SME)
 #endif  // defined(__aarch64__)
 void arm_fp32_4x4_3x3(unsigned int, const float *, size_t, const float *, float *, size_t, size_t, float, float);

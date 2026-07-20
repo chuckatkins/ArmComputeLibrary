@@ -34,7 +34,15 @@
 namespace arm_conv {
 namespace depthwise {
 
-void sve_u8q_nhwc_3x3_s1_output2x2_dot_depthfirst_impl(unsigned int, const uint8_t *const *, const uint8_t *, const int32_t *, const arm_gemm::Requantize32&, const int32_t *, const int32_t *, uint8_t *const *);
+void sve_u8q_nhwc_3x3_s1_output2x2_dot_depthfirst_impl(
+  const unsigned int,
+  const uint8_t *const *const,
+  const uint8_t *,
+  const int32_t *,
+  const arm_gemm::Requantize32&,
+  const int32_t *,
+  const int32_t *,
+  uint8_t *const *const);
 
 class sve_u8q_nhwc_3x3_s1_output2x2_dot_depthfirst : public DepthwiseDepthfirstStrategy<uint8_t, uint8_t, uint8_t, int32_t>
 {
