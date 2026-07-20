@@ -249,7 +249,6 @@ set_target_properties(
         COMPILE_OPTIONS "${ARM_COMPUTE_ARCH};${ARM_COMPUTE_COMMON_CCXX_FLAGS}"
         COMPILE_DEFINITIONS "${ARM_COMPUTE_DEFINES}"
         INCLUDE_DIRECTORIES "${ARM_COMPUTE_GRAPH_INCLUDE}"
-        LINK_LIBRARIES "${ARM_COMPUTE_LINK_LIBS}$<IF:$<PLATFORM_ID:Darwin>,;arm_compute,>"
 )
 
 if(ACL_MULTI_ISA)
@@ -290,6 +289,8 @@ else()
   add_library(arm_compute ${ARM_COMPUTE_LIB_BUILD_TYPE} ${lib_objs})
   set_target_properties(arm_compute PROPERTIES OUTPUT_NAME "arm_compute_${ACL_ARCH_ISA}")
 endif()
+
+target_link_libraries(arm_compute_graph PUBLIC arm_compute)
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
   target_compile_options(arm_compute_core PRIVATE -arch arm64)
